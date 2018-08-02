@@ -14,8 +14,10 @@ $args = array(
     );
 
 $attachments = get_posts( $args );
+$amount_of_images = sizeof($attachments);
 if ( $attachments ) {
     echo '<p>All images which appear here, need to have alt text and a description added to them</p>';
+    echo '<p>Total Number of images to fix: '. $amount_of_images .'' . '</p>';
     foreach ( $attachments as $attachment ) {
         $alt_text = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
         $image_description = $attachment ->post_content;
@@ -52,7 +54,7 @@ if ( $attachments ) {
 //                 echo '<a href=' . $image_urls . '>' .$image_titles.'</a>';
 //                 echo '</p></li>';
 //         }
-//     }
+    // }
 }
 
 ?>
