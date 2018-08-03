@@ -23,8 +23,6 @@ function altTextChecker(){
         // echo '<p>Total Number of images to fix: '. $amount_of_images .'' . '</p>';
         foreach ( $attachments as $attachment ) {
             $alt_text = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
-            
-            $image_description = $attachment ->post_content;
             $image_urls = get_permalink($attachment, true);
             $image_titles = apply_filters( 'the_title', $attachment->post_title );
             if (!$alt_text){
@@ -47,15 +45,14 @@ function descriptionChecker(){
         );
     
     $attachments = get_posts( $args );
-    
     if ( $attachments ) {
         echo '<p>All images which appear here, currently have no description text.</p>';
         // echo '<p>Total Number of images to fix: '. $amount_of_images .'' . '</p>';
-        foreach ( $attachments as $attachment ) {            
+        foreach ( $attachments as $attachment ) {      
             $image_description = $attachment ->post_content;
             $image_urls = get_permalink($attachment, true);
             $image_titles = apply_filters( 'the_title', $attachment->post_title );
-            if (!$$image_description){
+            if (!$$image_description){     
                 echo '<p><li>';
                 echo '<a href=' . $image_urls . '>' .$image_titles.'</a>';
                 echo '</p></li>';
@@ -74,7 +71,7 @@ function footerText(){
 
 altTextChecker();
 footerText();
-// altDescriptionChecker();
+
 
 ?>
 <!-- <p>This is the front-facing part of the widget, and can be found and edited from <tt><?php echo __FILE__ ?></tt></p>

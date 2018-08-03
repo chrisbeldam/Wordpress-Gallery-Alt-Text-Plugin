@@ -3,7 +3,7 @@
 Plugin Name: Alt Text Gallery Checker
 Plugin URI: http://www.github.com/chrisbeldam
 Description: Shows you all the images in your media library without alt text
-Version: 1.1
+Version: 1.2
 Author: Chris Beldam
 Author URI: http://www.github.com/chrisbeldam
 License: GPLv2 or later
