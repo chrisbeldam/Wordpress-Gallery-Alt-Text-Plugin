@@ -6,7 +6,7 @@
 
 
 
-// PHP code which hooks into the wordpress media gallery and then allows me to return images without alt text, descriptions and more 
+// PHP code which hooks into the wordpress media gallery and then allows me to return images without alt text
 function altTextChecker(){
     $args = array(
         'post_type' => 'attachment',
@@ -35,6 +35,7 @@ function altTextChecker(){
     }
 }
 
+// Function which hooks into the wordpress media gallery and checks for descriptions on images
 function descriptionChecker(){
     $args = array(
         'post_type' => 'attachment',
