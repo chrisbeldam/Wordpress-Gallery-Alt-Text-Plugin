@@ -1,12 +1,22 @@
 <?php
 /*
-Plugin Name: Alt Text Gallery Checker
-Plugin URI: http://www.github.com/chrisbeldam
-Description: Shows you all the images in your media library without alt text
-Version: 1.2
-Author: Chris Beldam
-Author URI: http://www.github.com/chrisbeldam
-License: GPLv2 or later
+ * Plugin Name
+ *
+ * @package     PluginPackage
+ * @author      Chris Beldam
+ * @copyright   2018 Chris Beldam
+ * @license     GPL-2.0+
+ *
+ * @wordpress-plugin
+ * Plugin Name: Gallery Alt Text Checker - SEO
+ * Plugin URI:  https://www.github.com/chrisbeldam
+ * Description: Description of the plugin.
+ * Version:     1.3
+ * Author:      Chris Beldam
+ * Author URI:  https://www.github.com/chrisbeldam
+ * Text Domain: plugin-name
+ * License:     GPL-2.0+
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 */
 add_action('wp_dashboard_setup', array('My_Dashboard_Widget','init') );
 
