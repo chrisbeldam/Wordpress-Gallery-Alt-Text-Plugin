@@ -12,6 +12,12 @@ if (!function_exists('plugin_add_stylesheet')) {
     add_action('wp_print_styles', 'plugin_add_stylesheet');
 }
 
+if (!function_exists('plugin_add_scripts')){
+    function plugin_add_scripts(){
+        wp_enqueue_script('plugin-script', plugins_url('/js/main.css', __FILE__), false, '1.0', 'all');
+    }
+}
+
 // PHP code which hooks into the wordpress media gallery and then allows me to return images without alt text
 function altTextChecker(){
     $args = array(
@@ -36,7 +42,6 @@ function altTextChecker(){
                 echo '<a href=' . $image_urls . '>' .$image_titles.'</a>';
                 echo '</p></li>';
             }
-    
         } // End of gallery iteration
     }
 }
