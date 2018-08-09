@@ -5,6 +5,12 @@
  */  
 
 
+if (!function_exists('plugin_add_stylesheet')) {
+    function plugin_add_stylesheet(){
+        wp_enqueue_style( 'plugin-style', plugins_url( '/css/default.css', __FILE__ ), false, '1.0', 'all' );
+    }
+    add_action('wp_print_styles', 'plugin_add_stylesheet');
+}
 
 // PHP code which hooks into the wordpress media gallery and then allows me to return images without alt text
 function altTextChecker(){
@@ -49,7 +55,7 @@ function descriptionChecker(){
     if ( $attachments ) {
         echo '<p>All images which appear here, currently have no description text.</p>';
         // echo '<p>Total Number of images to fix: '. $amount_of_images .'' . '</p>';
-        foreach ( $attachments as $attachment ) {      
+        foreach ( $attachments as $attachment ) {
             $image_description = $attachment ->post_content;
             $image_urls = get_permalink($attachment, true);
             $image_titles = apply_filters( 'the_title', $attachment->post_title );
@@ -58,7 +64,6 @@ function descriptionChecker(){
                 echo '<a href=' . $image_urls . '>' .$image_titles.'</a>';
                 echo '</p></li>';
             }
-            
         } // End of gallery iteration
     }
 }
