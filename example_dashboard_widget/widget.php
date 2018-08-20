@@ -5,6 +5,7 @@
  */  
 
 
+
 // PHP code which hooks into the wordpress media gallery and then allows me to return images without alt text
 function altTextChecker(){
     $args = array(
@@ -24,10 +25,12 @@ function altTextChecker(){
             $alt_text = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
             $image_urls = get_permalink($attachment, true);
             $image_titles = apply_filters( 'the_title', $attachment->post_title );
-            if (!$alt_text){
-                echo '<p><li>';
-                echo '<a href=' . $image_urls . '>' .$image_titles.'</a>';
-                echo '</p></li>';
+            if (strpos($image_urls, '%postname%') === false){
+                if (!$alt_text){
+                    echo '<p><li>';
+                    echo '<a href=' . $image_urls . '>' .$image_titles.'</a>';
+                    echo '</p></li>';
+                }
             }
         } // End of gallery iteration
     }
@@ -47,14 +50,16 @@ function descriptionChecker(){
     if ( $attachments ) {
         echo '<p>All images which appear here, currently have no description text.</p>';
         // echo '<p>Total Number of images to fix: '. $amount_of_images .'' . '</p>';
-        foreach ( $attachments as $attachment ) {
+        foreach ( $attachments as $attachment ) {      
             $image_description = $attachment ->post_content;
             $image_urls = get_permalink($attachment, true);
             $image_titles = apply_filters( 'the_title', $attachment->post_title );
-            if (!$$image_description){     
-                echo '<p><li>';
-                echo '<a href=' . $image_urls . '>' .$image_titles.'</a>';
-                echo '</p></li>';
+            if (strpos($image_urls, '%postname%') === false){
+                if (!$image_description){     
+                    echo '<p><li>';
+                    echo '<a href=' . $image_urls . '>' .$image_titles.'</a>';
+                    echo '</p></li>';
+                }
             }
         } // End of gallery iteration
     }
@@ -68,7 +73,7 @@ function footerText(){
 }
 
 altTextChecker();
-footerText();
+// footerText();
 
 
 ?>
