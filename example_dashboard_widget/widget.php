@@ -30,6 +30,9 @@ function altTextChecker(){
                     echo '<p><li>';
                     echo '<a href=' . $image_urls . '>' .$image_titles.'</a>';
                     echo '</p></li>';
+                    if (!$alt_text === false){
+                        echo 'There are no images requiring alt text';
+                    }
                 }
             }
         } // End of gallery iteration
